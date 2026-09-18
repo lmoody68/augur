@@ -1,0 +1,16 @@
+# AUGUR — ignore generated + downloaded artifacts (code is the source of truth)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# generated at runtime: trained model + metrics (rebuilt by `demo` / `train`)
+models/
+# synthetic CSV, live SQLite, watchlist.html, downloaded benchmark data
+data/
+*.db
+alert_log.json
+
+.DS_Store
+.ipynb_checkpoints/

@@ -1,0 +1,10 @@
+{
+  "enabled": false,
+  "_comment": "Set enabled=true AND provide SMTP creds via env (AUGUR_SMTP_HOST/PORT/USER/PASS/FROM) to actually send. Until then AUGUR only prints what it WOULD send.",
+  "min_band": "HIGH",
+  "cooldown_hours": 12,
+  "channels": ["email"],
+  "recipients": [
+    {"name": "On-Call Tech (example)", "email": "oncall@example.com", "sms": "", "carrier": "vzw"}
+  ]
+}

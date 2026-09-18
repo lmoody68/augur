@@ -1,0 +1,5 @@
+# AUGUR — predictive-maintenance AI. Stdlib + the standard ML stack (all already in Les's env).
+numpy>=1.26
+pandas>=2.0
+scikit-learn>=1.3
+joblib>=1.3
