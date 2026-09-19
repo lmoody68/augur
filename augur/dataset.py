@@ -33,7 +33,9 @@ REQUIRED_COLUMNS = ["machine_id", "date"] + SENSOR_COLUMNS + STATIC_COLUMNS
 # `failed` (0/1) is required for TRAINING; `failure_mode` (bearing|belt|motor, blank if not failed)
 # enables the per-mode model — if a real export lacks it, AUGUR still trains the risk + RUL models.
 
-MACHINE_TYPES = ["DBCS", "AFSM100", "APBS", "DIOSS"]   # real USPS sorter families (context flavor)
+# Real USPS RPDC processing machines (from a live maintenance manager's floor: APPS package sorter,
+# APBS parcel-bundle sorter, SIPS small-item sorter, PILS, USS). Failures are logged as MTSC tickets.
+MACHINE_TYPES = ["APPS", "APBS", "SIPS", "PILS", "USS"]
 FAILURE_MODES = ["bearing", "belt", "motor"]           # the components AUGUR predicts by name
 _COMPONENTS = FAILURE_MODES
 

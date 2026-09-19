@@ -4,9 +4,16 @@
 precedes a breakdown, and produces a ranked watchlist so a maintenance team fixes machines *on a schedule*
 instead of *at 2 a.m. when the line goes down*.
 
-Built with a USPS mail-processing fleet in mind (bar-code & flat sorters — DBCS / AFSM100 / APBS / DIOSS),
-with a **USPS maintenance manager** as the domain expert and first tester. The moment there's a real
-telemetry / CMMS export, it drops in unchanged — same columns, same commands.
+Built with a real USPS mail-processing floor in mind — the package/parcel systems a Regional P&DC runs
+(**APPS, APBS, SIPS, PILS, USS**) — with a **USPS maintenance manager** as the domain expert and first
+tester. The moment there's a real telemetry / CMMS export, it drops in unchanged — same columns, same
+commands.
+
+> **Grounded in the real job.** The USPS *Manager, Maintenance Operations* role literally lists
+> **"predictive maintenance"** among its duties and requires the ability to *"observe, evaluate, and review
+> operational conditions and performance data to identify opportunities for improvement of maintenance
+> activities"* — which is exactly what AUGUR automates. Failures are tracked as **MTSC**
+> (Maintenance Technical Support Center) tickets; that ticket history is the label AUGUR learns from.
 
 ## What it does
 - **Predicts failures** with a real scikit-learn model: *"will this machine fail in the next 14 days?"*
