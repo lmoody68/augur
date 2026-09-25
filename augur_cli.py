@@ -20,7 +20,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from augur import dataset, model, report, store, alerts  # noqa: E402
+from augur import dataset, model, report, store, alerts, apps  # noqa: E402
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(_HERE, "data")
@@ -137,6 +137,19 @@ def cmd_benchmark(a):
     print(benchmark.report_text(benchmark.run(path)))
 
 
+def cmd_apps(_):
+    print("Generating a synthetic APPS control-room fleet (Site · Serial# · Side)…")
+    res = apps.run()
+    print(f"  {res['units']} APPS sides scored · {res['critical']} predicted CRITICAL · {res['high']} HIGH")
+    print("\nAUGUR — APPS Predicted At-Risk Board (worst first):")
+    print("  " + "-" * 74)
+    for r in res["top"]:
+        print(f"  {r['band']:<9} {r['risk']*100:5.1f}%  RUL {str(r['rul_days']):>4}d  "
+              f"{r['likely_fru']:<24} {r['machine_id']}")
+    print(f"\nAPPS board HTML → {res['html']}")
+    print("  (tabbed with the fleet watchlist — open watchlist.html and click the APPS Board tab)\n")
+
+
 def cmd_schema(_):
     print("AUGUR CSV schema (one row per machine per day):\n")
     print("  required : " + ", ".join(dataset.REQUIRED_COLUMNS))
@@ -157,6 +170,7 @@ def main():
         p.set_defaults(fn={"train": cmd_train, "predict": cmd_predict, "ingest": cmd_ingest}[name])
     ps = sub.add_parser("serve"); ps.add_argument("--port", type=int, default=8920)
     ps.set_defaults(fn=cmd_serve)
+    sub.add_parser("apps").set_defaults(fn=cmd_apps)
     sub.add_parser("alerts-test").set_defaults(fn=cmd_alerts_test)
     pb = sub.add_parser("benchmark"); pb.add_argument("--cmapss", default=None)
     pb.set_defaults(fn=cmd_benchmark)

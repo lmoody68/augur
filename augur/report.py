@@ -73,7 +73,12 @@ th{{background:color-mix(in srgb,var(--panel),var(--ink) 5%);font-size:11px;lett
 td.num{{text-align:right;font-variant-numeric:tabular-nums}}td.m{{font-weight:600}}
 .band{{color:#fff;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700}}
 .foot{{color:var(--dim);font-size:12px;margin-top:14px}}
+.tabs{{display:flex;gap:6px;margin-bottom:14px}}
+.tabs a{{text-decoration:none;color:var(--dim);background:var(--panel);border:1px solid var(--line);
+  border-radius:8px;padding:8px 16px;font-weight:600;font-size:13px}}
+.tabs a.on{{color:#fff;background:var(--accent);border-color:var(--accent)}}
 </style></head><body><div class="wrap">
+<div class="tabs"><a class="on" href="watchlist.html">Fleet Watchlist</a><a href="apps_board.html">APPS Board</a></div>
 <h1>🔧 AUGUR — Predictive-Maintenance Watchlist</h1>
 <p class="sub">Highest failure risk first · horizon = next 14 days · schedule CRITICAL / HIGH before they break.</p>
 <div class="cards">{metric_cards}</div>
